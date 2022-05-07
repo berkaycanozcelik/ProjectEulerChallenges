@@ -1,4 +1,4 @@
-public class Challenge3 {
+public class Challenge {
     public static void main(String[] args) {
         double input = 600851475143L;
         int highestPrime =0;
