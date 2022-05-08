@@ -1,34 +1,18 @@
 public class Challenge {
-    public static void main (String[] args)
-    {
-        int n = 10001;
-        int primeCounter = 0;
-        boolean isFound = false;
-        int number = 1;
+    public static void main (String[] args) {
+        double a=0;
 
-        while (!isFound){
-            number++;
-
-            if (number <= 1){
-                System.out.println("number is less or equal to 1. number is: " + number);
-                break;
-            }
-
-            if (number == 2){
-                primeCounter++;
-            }
-
-            for (int i = 2; i < number; i++){
-                if (number % i == 0)
-                    break;
-                if(i == number-1){
-                    primeCounter++;
+        for (double i = a; i < 500;i++){
+            for (double j = i +1; j <500; j++){
+                for (double k = j +1; k <500; k++){
+                    if (Math.pow(i,2) + Math.pow(j,2) == Math.pow(k,2)){
+                        if (i+j+k == 1000){
+                            long result = (long) (i*j*k);
+                            System.out.println(result);
+                            break;
+                        }
+                    }
                 }
-            }
-
-            if (primeCounter == n){
-                System.out.println(n + ".th number is " + number);
-                isFound =true;
             }
         }
     }
