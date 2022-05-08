@@ -1,17 +1,35 @@
 public class Challenge {
     public static void main (String[] args)
     {
-        int n = 100;
-        int sumOfSquares = 0 ;
-        double sum= 0;
+        int n = 10001;
+        int primeCounter = 0;
+        boolean isFound = false;
+        int number = 1;
 
-        for (int i = 1; i <= n; i++){
-            sumOfSquares += Math.pow(i,2);
-            sum += i;
+        while (!isFound){
+            number++;
+
+            if (number <= 1){
+                System.out.println("number is less or equal to 1. number is: " + number);
+                break;
+            }
+
+            if (number == 2){
+                primeCounter++;
+            }
+
+            for (int i = 2; i < number; i++){
+                if (number % i == 0)
+                    break;
+                if(i == number-1){
+                    primeCounter++;
+                }
+            }
+
+            if (primeCounter == n){
+                System.out.println(n + ".th number is " + number);
+                isFound =true;
+            }
         }
-
-        int result = (int)Math.pow(sum,2)- sumOfSquares;
-
-        System.out.println(result);
     }
 }
