@@ -1,44 +1,40 @@
 public class Challenge {
-    public static void main(String[] args) {
-        double input = 600851475143L;
-        int highestPrime =0;
-        int i =1;
+    static int larrgestPalindrome(int n)
+    {
+        int upperLimit = ((int) Math.pow(10, n)) - 1;
+        int lowerLimit = ((int) Math.pow(10, (n - 1)));
 
-        while (i <= input){
-            if (isPrime(i)){
-                if (input % i == 0){
-                    input /= i;
-                    highestPrime = i;
-                }
-            }
-            i++;
-        }
+        int maxResult = 0;
 
-        System.out.println("solution : " + highestPrime);
+      for (int i = upperLimit; i >= lowerLimit; i--){
+          for (int j = i; j >= lowerLimit; j--){
+              int result = i * j;
+
+              if (result < maxResult)
+                  break;
+
+              int num = result;
+              int reverse = 0;
+
+                  while(num > 0){
+
+
+                      int kalan = num % 10;
+                      reverse = ( reverse * 10 ) + kalan;
+                      num /= 10;
+                  }
+
+              if (reverse == result && result >maxResult)
+                  maxResult = result;
+          }
+      }
+      return maxResult;
     }
 
-    static boolean isPrime(int number){
-
-        if (number <= 1)
-            return false;
-
-        else if (number == 2){
-            System.out.println("number is prime bc it is 2");
-            return true;
-        }
-
-        else if (number % 2 == 0) {
-            System.out.println("number is not prime even number");
-            return false;
-        }
-
-        for(int i = 3; i <= Math.sqrt(number); i += 2){
-            if (number % i == 0)
-                return false;
-        }
-
-        System.out.println("number is prime");
-        return true;
-
+    // Driver code
+    public static void main (String[] args)
+    {
+        int n = 3;
+        System.out.print(larrgestPalindrome(n));
     }
 }
